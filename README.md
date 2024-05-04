@@ -28,16 +28,18 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 
 ## TODO
 - code quality checking algorithm
-    - three methods/functions with the highest complexity scores, along with their complexity scores.
     -  all method names follow a naming convention
     -  Report the % of methods that do not adhere to the specified naming convention
 - display code review
+- fix bug(?) with <init> function
+- what if there aren't 3 methods?
 
 ## DONE
 - create template
 - adding code functionality
 - parsing code
 - finding complexity
+- complexities are displayed
 
 ## Low Prioriy
 - add translations

@@ -124,6 +124,40 @@ public class FileCode {
     setMethods((ArrayList<Method>) methods);
     }
 
+    /**
+     * checks if the name is in camelcase
+     * @param name
+     * @return 1 if it is camelcase 0 if not
+     */
+    public static boolean isCamelCase (String name) {
+        String camelCasePattern = "^[a-z][a-zA-Z0-9]*$";
+        return name.matches(camelCasePattern);
+    }
+    /**
+     * Calculates the percentage of methods that are in camel case.
+     *
+     * @return The percentage of methods in camel case
+     */
+    public double percentageOfMethodsInCamelCase() {
+        int totalMethods = methods.size();
+        int camelCaseMethods = 0;
+
+        for (Method method : methods) {
+            if (isCamelCase(method.getName())) {
+                camelCaseMethods++;
+            }
+        }
+
+        if (totalMethods == 0) {
+            return 0;
+        } else {
+            double percentage = ((double) camelCaseMethods / totalMethods) * 100;
+
+            return Double.parseDouble(String.format("%.2f", percentage));
+        }
+    }
+
+
 
 
     /**
