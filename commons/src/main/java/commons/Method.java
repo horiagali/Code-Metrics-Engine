@@ -25,7 +25,7 @@ public class Method {
     /**
      * finds the complexity given a method
      * @param content
-     * @return
+     * @return returns the complexity, the number of statements like if, else, for and method calls
      */
     private int findComplexity(String content) {
         int complexity = 1;
@@ -115,7 +115,9 @@ public class Method {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Method method = (Method) o;
-        return complexity == method.complexity && Objects.equals(name, method.name) && Objects.equals(content, method.content);
+        return complexity == method.complexity
+                && Objects.equals(name, method.name)
+                && Objects.equals(content, method.content);
     }
 
     /**
