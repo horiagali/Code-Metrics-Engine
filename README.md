@@ -32,6 +32,8 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 - add more code prettiness features
 - write tests
 - make it work with class in class
+- add colors to the code
+- offer fixed code
 
 ## DONE
 - create template
