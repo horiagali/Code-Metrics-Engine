@@ -36,11 +36,14 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 ## DONE
 - create template
 - adding code functionality
+- parsing code
+- finding complexity
 
 ## Low Prioriy
 - add translations
 - add CSS, make it pretty
 - add color to the code (Red where complexity is too high, yellow where conventions aren't followed etc)
+
   
 ## License
 This project is licensed under the Apache License, Version 2.0. See the [LICENSE](LICENSE) file for details.

@@ -20,8 +20,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Object for the java file being processed
@@ -29,12 +27,18 @@ import java.util.regex.Pattern;
 public class FileCode {
     private String name;
     private String content;
-    private static final String METHOD_PATTERN = "(public|protected|private|static|\\s)+[\\w\\<\\>\\[\\]]*\\s+(\\w+)\\s*\\([^\\)]*\\)\\s*\\{([^\\}]*)\\}";
+    private static final String METHOD_PATTERN =
+            "(public|protected|private|static|\\s)+[\\w\\<\\>" +
+                    "\\[\\]]*\\s+(\\w+)\\s*\\([^\\)]*\\)\\s*\\{([^\\}]*)\\}";
     private ArrayList<Method> methods = new ArrayList<>();
 
 
     JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
-    StandardJavaFileManager fileManager = compiler.getStandardFileManager(null, null, StandardCharsets.UTF_8);
+    StandardJavaFileManager fileManager =
+            compiler.getStandardFileManager(
+                    null,
+                    null,
+                    StandardCharsets.UTF_8);
 
 
 
@@ -72,7 +76,10 @@ public class FileCode {
      * @return
      */
     private void parseFile(String path) {
-        Iterable<? extends JavaFileObject> compilationUnits = fileManager.getJavaFileObjectsFromFiles(Arrays.asList(new File(String.valueOf(path))));
+        Iterable<? extends JavaFileObject>
+                compilationUnits =
+                fileManager.getJavaFileObjectsFromFiles(
+                        Arrays.asList(new File(String.valueOf(path))));
 
         List<Method> methods = new ArrayList<>();
 
@@ -102,7 +109,9 @@ public class FileCode {
                                     methodContent = methodContent +"\n" + statement;
                                 }
 
-                                Method method = new Method(methodTree.getName().toString(),methodContent);
+                                Method method = new Method(
+                                        methodTree.getName().
+                                                toString(), methodContent);
                                 methods.add(method);
                                 return null;
                             }
@@ -119,7 +128,7 @@ public class FileCode {
 
     /**
      * gets the methods
-     * @return
+     * @return returns the methods
      */
     public ArrayList<Method> getMethods() {
         return methods;
@@ -149,10 +158,18 @@ public class FileCode {
         this.content = content;
     }
 
+    /**
+     * gets the name
+     * @return the name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * sets the name
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
@@ -167,7 +184,8 @@ public class FileCode {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FileCode fileCode = (FileCode) o;
-        return Objects.equals(content, fileCode.content) && Objects.equals(methods, fileCode.methods);
+        return Objects.equals(content, fileCode.content) &&
+                Objects.equals(methods, fileCode.methods);
     }
 
     /**
