@@ -44,5 +44,7 @@
 
     <!-- Text area for displaying complexities -->
     <TextArea fx:id="complexities" prefWidth="600.0" prefHeight="150.0" wrapText="true" />
+    <Text fx:id="camelCasePercentageText" text="Percentage of methods in camel case: " />
+    <TextArea fx:id="percentage" prefWidth="50.0" prefHeight="50.0" wrapText="true" />
 
 </VBox>

@@ -30,6 +30,8 @@ public class MainPageCtrl implements Initializable {
 
     @FXML
     private TextArea complexities;
+    @FXML
+    private TextArea percentage;
 
     /**
      *
@@ -64,6 +66,7 @@ public class MainPageCtrl implements Initializable {
             fileContentTextArea.setText(fileCode.getContent());
         }
         displayComplexities();
+        percentage.setText("Percentage of methods that are in camelCase is:" + fileCode.percentageOfMethodsInCamelCase() +"%");
     }
 
     /**
