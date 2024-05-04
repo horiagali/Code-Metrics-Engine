@@ -27,12 +27,10 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 5. Create a new Pull Request.
 
 ## TODO
-- code quality checking algorithm
-    -  all method names follow a naming convention
-    -  Report the % of methods that do not adhere to the specified naming convention
-- display code review
 - fix bug(?) with <init> function
 - what if there aren't 3 methods?
+- add more code prettiness features
+- write tests
 
 ## DONE
 - create template
@@ -40,6 +38,7 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 - parsing code
 - finding complexity
 - complexities are displayed
+- display camelcase percentage
 
 ## Low Prioriy
 - add translations
