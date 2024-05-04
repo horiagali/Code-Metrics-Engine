@@ -31,6 +31,7 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 - what if there aren't 3 methods?
 - add more code prettiness features
 - write tests
+- make it work with class in class
 
 ## DONE
 - create template
