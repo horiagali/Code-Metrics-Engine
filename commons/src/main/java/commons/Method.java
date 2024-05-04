@@ -28,8 +28,27 @@ public class Method {
      * @return
      */
     private int findComplexity(String content) {
-        return 2;
+        int complexity = 1;
+
+        int ifCount = content.split("\\bif\\b").length - 1;
+        int elseCount = content.split("\\belse\\b").length - 1;
+        int elseIfCount = content.split("\\belse if\\b").length - 1;
+
+        complexity += ifCount + elseCount + elseIfCount;
+
+        int forCount = content.split("\\bfor\\b").length - 1;
+        int whileCount = content.split("\\bwhile\\b").length - 1;
+        int doWhileCount = content.split("\\bdo\\b").length - 1;
+
+        complexity += forCount + whileCount + doWhileCount;
+
+        int methodCallCount = content.split("\\b[a-zA-Z_][a-zA-Z0-9_]*\\s*\\(").length ;
+
+        complexity += methodCallCount;
+
+        return complexity;
     }
+
 
     /**
      * Gets the name of the method.
