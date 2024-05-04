@@ -26,5 +26,23 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 4. Push to the branch (`git push origin feature/YourFeatureName`).
 5. Create a new Pull Request.
 
+## TODO
+- code quality checking algorithm
+    - three methods/functions with the highest complexity scores, along with their complexity scores.
+    -  all method names follow a naming convention
+    -  Report the % of methods that do not adhere to the specified naming convention
+- display code review
+
+## DONE
+- create template
+- adding code functionality
+- parsing code
+- finding complexity
+
+## Low Prioriy
+- add translations
+- add CSS, make it pretty
+- add color to the code (Red where complexity is too high, yellow where conventions aren't followed etc)
+
 ## License
 This project is licensed under the Apache License, Version 2.0. See the [LICENSE](LICENSE) file for details.
