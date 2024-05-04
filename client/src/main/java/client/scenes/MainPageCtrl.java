@@ -4,11 +4,15 @@ package client.scenes;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.google.inject.Inject;
 
 import commons.FileCode;
+import commons.Method;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,6 +27,9 @@ public class MainPageCtrl implements Initializable {
 
     @FXML
     private TextArea fileContentTextArea; // Reference to TextArea in FXML
+
+    @FXML
+    private TextArea complexities;
 
     /**
      *
@@ -56,5 +63,25 @@ public class MainPageCtrl implements Initializable {
             // Set the file content to the TextArea
             fileContentTextArea.setText(fileCode.getContent());
         }
+        displayComplexities();
     }
+
+    /**
+     * displays the top3complexities
+     */
+    public void displayComplexities () {
+        List<Method> methods = fileCode.getMethods();
+        Collections.sort(methods, Comparator.comparingInt(Method::getComplexity).reversed());
+        StringBuilder topMethods = new StringBuilder();
+        int count = 0;
+        for (Method method : methods) {
+            if (count >= 3) break;
+            topMethods.append("Method Name: ").append(method.getName()).append("\n");
+            topMethods.append("Method Complexity: ").append(method.getComplexity()).append("\n\n");
+            count++;
+        }
+        complexities.setText(topMethods.toString());
+    }
+
+
 }
