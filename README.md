@@ -9,7 +9,7 @@ The Code Quality Checker is a Java application designed to evaluate basic aspect
 
 ## Requirements
 - Java JDK 8 or higher
-- Gradle (optional, for building)
+- Gradle 
 
 ## Usage
 1. Clone the repository to your local machine.
