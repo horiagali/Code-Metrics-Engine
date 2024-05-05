@@ -76,8 +76,7 @@ public class FileCode {
      * @return
      */
     private void parseFile(String path) {
-        Iterable<? extends JavaFileObject>
-                compilationUnits =
+        Iterable<? extends JavaFileObject> compilationUnits =
                 fileManager.getJavaFileObjectsFromFiles(
                         Arrays.asList(new File(String.valueOf(path))));
 
@@ -96,33 +95,45 @@ public class FileCode {
             for (Tree tree : compilationUnitTree.getTypeDecls()) {
                 if (tree.getKind() == Tree.Kind.CLASS) {
                     ClassTree classTree = (ClassTree) tree;
-//                    System.out.println("Found class: " + classTree.getSimpleName());
                     setName(String.valueOf(classTree.getSimpleName()));
-                    // Process methods within the class
-                    for (Tree member : classTree.getMembers()) {
-                        member.accept(new SimpleTreeVisitor(){
-                            @Override
-                            public Object visitMethod(MethodTree methodTree, Object o) {
-//                                System.out.println("Found method: " + methodTree.getName());
-                                String methodContent = "";
-                                for (Tree statement : methodTree.getBody().getStatements()) {
-                                    methodContent = methodContent +"\n" + statement;
-                                }
-
-                                Method method = new Method(
-                                        methodTree.getName().
-                                                toString(), methodContent);
-                                methods.add(method);
-                                return null;
-                            }
-                        }, null);
-                    }
-
+                    processClass(classTree, methods);
                 }
             }
         }
-    setMethods((ArrayList<Method>) methods);
+
+        setMethods((ArrayList<Method>) methods);
     }
+
+    /**
+     * Process methods within a class
+     * @param classTree
+     * @param methods
+     */
+    private void processClass(ClassTree classTree, List<Method> methods) {
+        for (Tree member : classTree.getMembers()) {
+            member.accept(new SimpleTreeVisitor() {
+                @Override
+                public Object visitMethod(MethodTree methodTree, Object o) {
+                    String methodContent = "";
+                    for (Tree statement : methodTree.getBody().getStatements()) {
+                        methodContent = methodContent + "\n" + statement;
+                    }
+
+                    Method method = new Method(
+                            methodTree.getName().toString(), methodContent);
+                    methods.add(method);
+                    return null;
+                }
+
+                @Override
+                public Object visitClass(ClassTree nestedClassTree, Object o) {
+                    processClass(nestedClassTree, methods);
+                    return null;
+                }
+            }, null);
+        }
+    }
+
 
     /**
      * checks if the name is in camelcase
