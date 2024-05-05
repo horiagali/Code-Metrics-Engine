@@ -19,15 +19,14 @@ public class Method {
     public Method(String name, String content) {
         this.name = name;
         this.content = content;
-        this.complexity = findComplexity(content);
+        this.complexity = findComplexity();
     }
 
     /**
      * finds the complexity given a method
-     * @param content
      * @return returns the complexity, the number of statements like if, else, for and method calls
      */
-    private int findComplexity(String content) {
+    private int findComplexity() {
         int complexity = 1;
 
         int ifCount = content.split("\\bif\\b").length - 1;
@@ -47,6 +46,15 @@ public class Method {
         complexity += methodCallCount;
 
         return complexity;
+    }
+
+    /**
+     * Finds the number of lines in a method.
+     * @return the number of lines
+     */
+    public int length() {
+        String[] lines = content.split("\\r?\\n");
+        return lines.length;
     }
 
 
