@@ -17,7 +17,7 @@ public class FileCodeTest {
     public void testConstructorAndGetters(@TempDir Path tempDir) throws IOException {
         String fileName = "Example.java";
         String content = "public class Example {\n" +
-                "   void IgnOre() { }  public void method() {\n" +
+                "    public void method() {\n" +
                 "        System.out.println(\"Hello, world!\");\n" +
                 "    }\n" +
                 "}";
@@ -34,7 +34,7 @@ public class FileCodeTest {
     public void testPercentageOfMethodsInCamelCase(@TempDir Path tempDir) throws IOException {
         String fileName = "Example.java";
         String content = "public class Example {\n" +
-                "  void IgnOre() { }   public void methodOne() {\n" + /// the IgnOre is there in place of the <init> method
+                "   public void methodOne() {\n" + /// the IgnOre is there in place of the <init> method
                 "    }\n" +
                 "    public void method_two() {\n" +
                 "    }\n" +
@@ -52,7 +52,7 @@ public class FileCodeTest {
     public void testProcessClass(@TempDir Path tempDir) throws IOException {
         String fileName = "Example.java";
         String content = "public class Example {\n" +
-                "   void IgnOre(){ mama}   public void method() {\n" +
+                "      public void method() {\n" +
                 "        System.out.println(\"Hello, world!\");\n" +
                 "    }\n" +
                 "}";
@@ -62,10 +62,10 @@ public class FileCodeTest {
         FileCode fileCode = new FileCode(filePath);
 
         ArrayList<Method> methods = fileCode.getMethods();
-        assertEquals(2, methods.size());
+        assertEquals(1, methods.size());
         assertEquals(100,fileCode.percentageOfMethodsInCamelCase());
-        assertEquals("method", methods.get(1).getName());
-        assertEquals("System.out.println(\"Hello, world!\");", methods.get(1).getContent().trim());
+        assertEquals("method", methods.get(0).getName());
+        assertEquals("System.out.println(\"Hello, world!\");", methods.get(0).getContent().trim());
     }
 
     @Test

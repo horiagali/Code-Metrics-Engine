@@ -150,7 +150,7 @@ public class FileCode {
      * @return The percentage of methods in camel case
      */
     public double percentageOfMethodsInCamelCase() {
-        int totalMethods = methods.size()-1;
+        int totalMethods = methods.size();
         int camelCaseMethods = 0;
 
         for (Method method : methods) {
@@ -160,7 +160,7 @@ public class FileCode {
         }
 
         if (totalMethods == 0) {
-            return 0;
+            return 100;
         }
 
 
