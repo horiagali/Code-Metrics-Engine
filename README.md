@@ -27,9 +27,7 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 5. Create a new Pull Request.
 
 ## TODO
-- add more code prettiness features
 - write tests
-- make it work with class in class
 - add colors to the code
 - offer fixed code
 
@@ -44,6 +42,8 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 - what if there aren't 3 methods?
 - method longer than 60 lines
 - line longer than 100 characters
+- add more code prettiness features
+- make it work with class in class
 
 
 
