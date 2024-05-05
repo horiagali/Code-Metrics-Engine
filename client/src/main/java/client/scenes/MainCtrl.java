@@ -33,6 +33,8 @@ public class MainCtrl {
      */
     public void showMainPage() {
         primaryStage.setTitle("Main Page");
+        primaryStage.setFullScreen(true);
+
         primaryStage.setScene(overview);
     }
 

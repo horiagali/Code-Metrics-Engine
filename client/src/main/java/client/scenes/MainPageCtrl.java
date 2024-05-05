@@ -53,7 +53,8 @@ public class MainPageCtrl implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        maxLinesInput.setText(String.valueOf(maxLength));
+        maxCharsInput.setText(String.valueOf(maxChars));
     }
 
     /**
@@ -76,7 +77,7 @@ public class MainPageCtrl implements Initializable {
             fileContentTextArea.setText(fileCode.getContent());
         }
         displayComplexities();
-        percentage.setText("Percentage of methods that are in camelCase is:"
+        percentage.setText("Percentage of methods that are in camelCase is: "
                 + fileCode.percentageOfMethodsInCamelCase() + "%");
         otherIssuesText.setText(createIssuesText());
     }

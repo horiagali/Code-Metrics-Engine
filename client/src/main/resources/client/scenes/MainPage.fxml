@@ -8,29 +8,83 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.MenuBar?>
 
-<VBox fx:id="vbox" alignment="CENTER" prefHeight="600.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.scenes.MainPageCtrl">
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Label?>
+<VBox fx:id="vbox" alignment="CENTER" prefHeight="600.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.scenes.MainPageCtrl" stylesheets="/css.files/styles.css">
 
-    <!-- Combined MenuBar -->
-    <MenuBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="41.0" prefWidth="640.0" VBox.vgrow="NEVER">
+    <!-- MenuBar -->
+    <MenuBar layoutX="-14.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="41.0" prefWidth="640.0" VBox.vgrow="NEVER">
         <menus>
-            <!-- Menu items -->
+            <Menu fx:id="languageMenu" mnemonicParsing="false">
+                <graphic>
+                    <StackPane alignment="CENTER_LEFT">
+                        <!-- ImageView for the flag -->
+                        <ImageView fx:id="languageFlagImageView" fitHeight="25" fitWidth="30">
+                            <image>
+                                <Image fx:id="languageFlagImage" url="@/client/scenes/images/BritishFlag.png" />
+                            </image>
+                        </ImageView>
+                    </StackPane>
+                </graphic>
+                <items>
+                    <RadioMenuItem mnemonicParsing="false" text="English">
+                        <toggleGroup>
+                            <ToggleGroup fx:id="languageGroup" />
+                        </toggleGroup>
+                        <graphic>
+                            <ImageView fitHeight="25" fitWidth="30">
+                                <image>
+                                    <Image url="@/client/scenes/images/BritishFlag.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </RadioMenuItem>
+                    <RadioMenuItem mnemonicParsing="false"  text="Romana">
+                        <toggleGroup>
+                            <fx:reference source="languageGroup" />
+                        </toggleGroup>
+                        <graphic>
+                            <ImageView fitHeight="25" fitWidth="30">
+                                <image>
+                                    <Image url="@/client/scenes/images/RomanianFlag.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </RadioMenuItem>
+                    <RadioMenuItem mnemonicParsing="false" text="Nederlands">
+                        <toggleGroup>
+                            <fx:reference source="languageGroup" />
+                        </toggleGroup>
+                        <graphic>
+                            <ImageView fitHeight="25" fitWidth="30">
+                                <image>
+                                    <Image url="@/client/scenes/images/DutchFlag.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </RadioMenuItem>
+                </items>
+            </Menu>
         </menus>
     </MenuBar>
 
-    <!-- Title -->
-    <StackPane alignment="CENTER">
-        <Text text="Code Quality Checker">
-            <font>
-                <Font name="Times New Roman" size="24.0" />
-            </font>
-        </Text>
-    </StackPane>
 
-    <!-- Description -->
-    <Text text="The Code Quality Checker is a Java application designed to evaluate basic aspects of code quality within a small codebase. It provides functionality to analyze Java files for code complexity and basic code style adherence. This application aims to assist developers in improving the quality of their code by identifying potential issues and suggesting improvements."
-          wrappingWidth="600" />
+    <Label text="Code Quality Checker" id="titleLabel">
+        <font>
+            <Font name="Arial" size="40.0" />
+        </font>
+    </Label>
+
+
+
     <Region prefHeight="10.0" />
-
+    <!-- Button to pick a Java file -->
+    <Button text="Pick Java File" onAction="#pickFile" />
     <!-- Max Lines Per Method Input -->
     <VBox spacing="10" alignment="CENTER">
         <Text text="Enter Max Lines Per Method:">
@@ -38,7 +92,7 @@
                 <Font name="Times New Roman" size="14.0" />
             </font>
         </Text>
-        <TextField fx:id="maxLinesInput" prefWidth="150.0" />
+        <TextField fx:id="maxLinesInput" maxWidth="100.0" />
     </VBox>
 
     <!-- Max Characters Per Line Input -->
@@ -48,26 +102,26 @@
                 <Font name="Arial" size="14.0" />
             </font>
         </Text>
-        <TextField fx:id="maxCharsInput" prefWidth="150.0" />
+        <TextField fx:id="maxCharsInput" maxWidth="100.0" />
     </VBox>
 
     <Button text="Apply" onAction="#applySettings" />
 
-    <!-- Button to pick a Java file -->
-    <Button text="Pick Java File" onAction="#pickFile" />
+
 
     <!-- Text area for file content -->
-    <TextArea fx:id="fileContentTextArea" prefWidth="600.0" prefHeight="300.0" wrapText="true" />
+    <TextArea fx:id="fileContentTextArea" maxWidth="600.0" prefHeight="300.0" wrapText="true" />
 
-    <!-- Label for the top methods -->
     <Text text="The methods with the biggest complexities are:" />
     <!-- Text area for displaying complexities -->
-    <TextArea fx:id="complexities" prefWidth="600.0" prefHeight="150.0" wrapText="true" />
+    <TextArea fx:id="complexities" maxWidth="600.0" prefHeight="300.0" wrapText="true" />
 
     <Text fx:id="camelCasePercentageText" text="Percentage of methods in camel case:" />
-    <TextArea fx:id="percentage" prefWidth="200.0" prefHeight="50.0" wrapText="true" />
+    <!-- Text area for displaying percentage -->
+    <TextArea fx:id="percentage" maxWidth="600.0" prefHeight="50.0" wrapText="true" />
+
 
     <Text text="Other issues found:" />
-    <TextArea fx:id="otherIssuesText" prefWidth="200.0" prefHeight="200.0" wrapText="true" />
+    <TextArea fx:id="otherIssuesText" maxWidth="600.0" prefHeight="200.0" wrapText="true" />
 
 </VBox>
