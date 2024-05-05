@@ -28,7 +28,7 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 
 ## TODO
 - write tests
-- add colors to the code
+- add color to the code (Red where complexity is too high, yellow where conventions aren't followed etc)
 - offer fixed code
 
 ## DONE
@@ -44,12 +44,11 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 - line longer than 100 characters
 - add more code prettiness features
 - make it work with class in class
+- add CSS, make it pretty
 
 
 
 ## Low Prioriy
 - add translations
-- add CSS, make it pretty
-- add color to the code (Red where complexity is too high, yellow where conventions aren't followed etc)
 
   
