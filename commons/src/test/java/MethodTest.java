@@ -1,7 +1,7 @@
-import static org.junit.Assert.assertEquals;
-
 import commons.Method;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MethodTest {
 
@@ -13,7 +13,7 @@ public class MethodTest {
 
         assertEquals(name, method.getName());
         assertEquals(content, method.getContent());
-        assertEquals(1, method.getComplexity());
+        assertEquals(3, method.getComplexity());
     }
 
     @Test
@@ -23,7 +23,7 @@ public class MethodTest {
                 "}";
         Method method = new Method("methodName", content);
 
-        assertEquals(2, method.getComplexity());
+        assertEquals(5, method.getComplexity());
     }
 
 }

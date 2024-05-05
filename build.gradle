@@ -1,5 +1,5 @@
 plugins {
-    id 'org.kordamp.gradle.jacoco' version '0.54.0'
+	id 'org.kordamp.gradle.jacoco' version '0.54.0'
 }
 
 allprojects {
@@ -12,8 +12,8 @@ subprojects {
 	apply plugin: 'java'
 	apply plugin: 'checkstyle'
 	apply plugin: 'jacoco'
-	
-	
+
+
 	group = 'oopp'
 	version = '0.0.1-SNAPSHOT'
 	sourceCompatibility = '11'
@@ -28,7 +28,7 @@ subprojects {
 
 	tasks.named('test') {
 		useJUnitPlatform()
-		finalizedBy jacocoTestReport 
+		finalizedBy jacocoTestReport
 	}
 	jacocoTestReport {
 		reports {
@@ -37,12 +37,22 @@ subprojects {
 			html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
 		}
 	}
-	
+	sourceSets {
+		test {
+			java {
+				srcDir 'src/test/java' // Add this line to include the specified directory
+			}
+		}
+	}
+
+
 	dependencies {
 		implementation 'org.apache.commons:commons-lang3:3.12.0'
-		
+		implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.16.1'
+
 		testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
 		testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 		testImplementation 'org.mockito:mockito-core:4.1.0'
+		testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 	}
 }
