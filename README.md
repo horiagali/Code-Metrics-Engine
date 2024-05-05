@@ -9,7 +9,7 @@ The Code Quality Checker is a Java application designed to evaluate basic aspect
 - **Method and line length chekcer** Highlights the methods/ lines which surpass a chosen limit.
 
 ## Description
-The project adopts a modular structure, leveraging JavaFX for the GUI and FXML controllers for UI components. The FileCode class serves as the core for code analysis, parsing Java files and evaluating metrics like method complexity. Error handling ensures a smooth user experience, while internationalization enhances accessibility. Unit testing would bolster code reliability. The approach aims for modularity, usability, and code quality.
+The project adopts a modular structure, leveraging JavaFX for the GUI and FXML controllers for UI components. The FileCode class serves as the core for code analysis, parsing Java files and evaluating metrics like method complexity. Error handling ensures a smooth user experience, while internationalization enhances accessibility. Unit testing would bolster code reliability. The approach aims for modularity, usability, and code quality. Apart from the basic requirments I implemented a checker for line and method length.
 ## Requirements
 - Java JDK 8 or higher
 - Gradle 
