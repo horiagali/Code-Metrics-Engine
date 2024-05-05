@@ -151,11 +151,16 @@ public class FileCode {
         if (totalMethods == 0 || totalMethods==1) {
             return 0;
         } else {
-            double percentage = ((double) camelCaseMethods / (totalMethods-1)) * 100; /// not considering the <init> method
+            double percentage =
+                    ((double) camelCaseMethods /
+                            (totalMethods-1)) * 100; /// not considering the <init> method
 
             return Double.parseDouble(String.format("%.2f", percentage));
         }
     }
+
+
+
 
 
 

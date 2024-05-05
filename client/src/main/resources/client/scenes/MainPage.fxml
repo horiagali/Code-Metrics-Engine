@@ -3,11 +3,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.MenuBar?>
 
-<VBox fx:id="vbox" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.scenes.MainPageCtrl">
+<VBox fx:id="vbox" alignment="CENTER" prefHeight="600.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.scenes.MainPageCtrl">
+
     <!-- Combined MenuBar -->
     <MenuBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="41.0" prefWidth="640.0" VBox.vgrow="NEVER">
         <menus>
@@ -17,7 +19,7 @@
 
     <!-- Title -->
     <StackPane alignment="CENTER">
-        <Text text="Code Quality Checker" >
+        <Text text="Code Quality Checker">
             <font>
                 <Font name="Times New Roman" size="24.0" />
             </font>
@@ -25,9 +27,31 @@
     </StackPane>
 
     <!-- Description -->
-    <Region prefHeight="10.0" />
     <Text text="The Code Quality Checker is a Java application designed to evaluate basic aspects of code quality within a small codebase. It provides functionality to analyze Java files for code complexity and basic code style adherence. This application aims to assist developers in improving the quality of their code by identifying potential issues and suggesting improvements."
           wrappingWidth="600" />
+    <Region prefHeight="10.0" />
+
+    <!-- Max Lines Per Method Input -->
+    <VBox spacing="10" alignment="CENTER">
+        <Text text="Enter Max Lines Per Method:">
+            <font>
+                <Font name="Times New Roman" size="14.0" />
+            </font>
+        </Text>
+        <TextField fx:id="maxLinesInput" prefWidth="150.0" />
+    </VBox>
+
+    <!-- Max Characters Per Line Input -->
+    <VBox spacing="10" alignment="CENTER">
+        <Text text="Enter Max Characters Per Line:">
+            <font>
+                <Font name="Arial" size="14.0" />
+            </font>
+        </Text>
+        <TextField fx:id="maxCharsInput" prefWidth="150.0" />
+    </VBox>
+
+    <Button text="Apply" onAction="#applySettings" />
 
     <!-- Button to pick a Java file -->
     <Button text="Pick Java File" onAction="#pickFile" />
@@ -36,15 +60,14 @@
     <TextArea fx:id="fileContentTextArea" prefWidth="600.0" prefHeight="300.0" wrapText="true" />
 
     <!-- Label for the top methods -->
-    <Text text="The methods with the biggest complexities are:" >
-        <font>
-            <Font name="Times New Roman" size="14.0" />
-        </font>
-    </Text>
-
+    <Text text="The methods with the biggest complexities are:" />
     <!-- Text area for displaying complexities -->
     <TextArea fx:id="complexities" prefWidth="600.0" prefHeight="150.0" wrapText="true" />
-    <Text fx:id="camelCasePercentageText" text="Percentage of methods in camel case: " />
-    <TextArea fx:id="percentage" prefWidth="50.0" prefHeight="50.0" wrapText="true" />
+
+    <Text fx:id="camelCasePercentageText" text="Percentage of methods in camel case:" />
+    <TextArea fx:id="percentage" prefWidth="200.0" prefHeight="50.0" wrapText="true" />
+
+    <Text text="Other issues found:" />
+    <TextArea fx:id="otherIssuesText" prefWidth="200.0" prefHeight="200.0" wrapText="true" />
 
 </VBox>
