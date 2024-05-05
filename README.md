@@ -30,8 +30,7 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 - write tests
 - add color to the code (Red where complexity is too high, yellow where conventions aren't followed etc)
 - offer fixed code
-- make complexity work better
-- make character count not count comments
+- make character count not count  /** comments
 
 ## DONE
 - create template
@@ -47,6 +46,7 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 - add more code prettiness features
 - make it work with class in class
 - add CSS, make it pretty
+- make complexity work better
 
 
 
