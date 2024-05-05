@@ -6,7 +6,10 @@ The Code Quality Checker is a Java application designed to evaluate basic aspect
 ## Features
 - **Code Complexity Evaluator**: Analyzes methods/functions for complexity, counting conditional statements.
 - **Basic Code Style Check**: Ensures adherence to a specified naming convention for method names.
+- **Method and line length chekcer** Highlights the methods/ lines which surpass a chosen limit.
 
+## Description
+The project adopts a modular structure, leveraging JavaFX for the GUI and FXML controllers for UI components. The FileCode class serves as the core for code analysis, parsing Java files and evaluating metrics like method complexity. Error handling ensures a smooth user experience, while internationalization enhances accessibility. Unit testing would bolster code reliability. The approach aims for modularity, usability, and code quality.
 ## Requirements
 - Java JDK 8 or higher
 - Gradle 
