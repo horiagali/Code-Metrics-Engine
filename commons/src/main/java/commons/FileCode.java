@@ -150,7 +150,7 @@ public class FileCode {
      * @return The percentage of methods in camel case
      */
     public double percentageOfMethodsInCamelCase() {
-        int totalMethods = methods.size();
+        int totalMethods = methods.size()-1;
         int camelCaseMethods = 0;
 
         for (Method method : methods) {
@@ -159,15 +159,16 @@ public class FileCode {
             }
         }
 
-        if (totalMethods == 0 || totalMethods==1) {
+        if (totalMethods == 0) {
             return 0;
-        } else {
-            double percentage =
-                    ((double) camelCaseMethods /
-                            (totalMethods-1)) * 100; /// not considering the <init> method
+        }
+
+
+        double percentage = ((double) camelCaseMethods /
+                            (totalMethods)) * 100;
 
             return Double.parseDouble(String.format("%.2f", percentage));
-        }
+
     }
 
 
