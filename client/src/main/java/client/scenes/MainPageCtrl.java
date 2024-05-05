@@ -1,24 +1,22 @@
 
 package client.scenes;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.util.*;
-
 import com.google.inject.Inject;
-
-
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import commons.FileCode;
 import commons.Method;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.util.*;
 
 public class MainPageCtrl implements Initializable {
 
@@ -77,8 +75,8 @@ public class MainPageCtrl implements Initializable {
             fileContentTextArea.setText(fileCode.getContent());
         }
         displayComplexities();
-        percentage.setText("Percentage of methods that are in camelCase is: "
-                + fileCode.percentageOfMethodsInCamelCase() + "%");
+        percentage.setText("Percentage of methods that are not in camelCase is: "
+                + (100-fileCode.percentageOfMethodsInCamelCase()) + "%");
         otherIssuesText.setText(createIssuesText());
     }
 

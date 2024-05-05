@@ -1,6 +1,8 @@
 package commons;
 
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Represents a method in Java code.
@@ -38,12 +40,18 @@ public class Method {
         int forCount = content.split("\\bfor\\b").length - 1;
         int whileCount = content.split("\\bwhile\\b").length - 1;
         int doWhileCount = content.split("\\bdo\\b").length - 1;
+        int count = 0;
 
         complexity += forCount + whileCount + doWhileCount;
+        Pattern pattern = Pattern.compile("\\w+\\s*\\([^;{]*\\);");
+        Matcher matcher = pattern.matcher(content);
 
-        int methodCallCount = content.split("\\b[a-zA-Z_][a-zA-Z0-9_]*\\s*\\(").length ;
+        while (matcher.find()) {
+            count++;
+        }
 
-        complexity += methodCallCount;
+
+        complexity += count;
 
         return complexity;
     }

@@ -116,7 +116,7 @@
     <!-- Text area for displaying complexities -->
     <TextArea fx:id="complexities" maxWidth="600.0" prefHeight="300.0" wrapText="true" />
 
-    <Text fx:id="camelCasePercentageText" text="Percentage of methods in camel case:" />
+    <Text fx:id="camelCasePercentageText" text="Percentage of methods not in camel case:" />
     <!-- Text area for displaying percentage -->
     <TextArea fx:id="percentage" maxWidth="600.0" prefHeight="50.0" wrapText="true" />
 
