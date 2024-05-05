@@ -123,18 +123,20 @@ public class MainPageCtrl implements Initializable {
 
 
     /**
-     * Returns the lines with more than 100 characters.
+     * Returns the lines with more than 100 characters. Does not count comments
      *
      * @return List of lines with more than 100 characters
      */
     public List<Integer> linesWithMoreThanXCharacters() {
-
         int index = 1;
         List<Integer> longLines = new ArrayList<>();
         String[] lines = fileCode.getContent().split("\\r?\\n");
 
         for (String line : lines) {
-            if (line.length() > maxChars) {
+            // Remove everything after the //
+            String lineWithoutComments = line.replaceAll("//.*", "");
+
+            if (lineWithoutComments.trim().length() > maxChars) {
                 longLines.add(index);
             }
             index++;
@@ -142,6 +144,8 @@ public class MainPageCtrl implements Initializable {
 
         return longLines;
     }
+
+
 
     /**
      * Applies the max number of chars and lines inputed by the user
