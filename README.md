@@ -14,9 +14,11 @@ The Code Quality Checker is a Java application designed to evaluate basic aspect
 ## Usage
 1. Clone the repository to your local machine.
 2. Open the project in your preferred IDE.
-3. Run the application.
-4. Click on the "Pick Java File" button to select a Java file for analysis.
-5. The selected file's content will be displayed in the TextArea.
+3. Build Gradle
+4. Run the application.
+5. Click on the "Pick Java File" button to select a Java file for analysis.
+6. (Optional) Customize preferred method and row length limit.
+7. The selected file's review will be displayed.
 
 ## How to Contribute
 Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
