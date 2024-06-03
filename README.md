@@ -39,6 +39,7 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 - reccomend initial file (C) 
 - make so app doesn t closes when picking file
 - remove debug prints
+- rethink layout
 ## DONE
 - create template
 - adding code functionality
