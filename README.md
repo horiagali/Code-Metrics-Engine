@@ -38,6 +38,7 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 - make character count not count  /** comments
 - reccomend initial file (C) 
 - make so app doesn t closes when picking file
+- remove debug prints
 ## DONE
 - create template
 - adding code functionality
