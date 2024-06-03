@@ -36,7 +36,8 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 - add color to the code (Red where complexity is too high, yellow where conventions aren't followed etc)
 - offer fixed code
 - make character count not count  /** comments
-
+- reccomend initial file (C) 
+- make so app doesn t closes when picking file
 ## DONE
 - create template
 - adding code functionality
