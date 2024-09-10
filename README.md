@@ -2,6 +2,7 @@
 
 ## Overview
 The Code Quality Checker is a Java application designed to evaluate basic aspects of code quality within a small codebase. It provides functionality to analyze Java files for code complexity and basic code style adherence.
+![image](https://github.com/user-attachments/assets/5d56a273-9776-4c97-8f77-5acf6dc862be)
 
 ## Features
 - **Code Complexity Evaluator**: Analyzes methods/functions for complexity, counting conditional statements.
