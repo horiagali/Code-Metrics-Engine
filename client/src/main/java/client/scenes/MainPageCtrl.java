@@ -16,6 +16,7 @@ import javafx.stage.FileChooser;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class MainPageCtrl implements Initializable {
@@ -72,13 +73,36 @@ public class MainPageCtrl implements Initializable {
         if (selectedFile != null) {
             fileCode = new FileCode(selectedFile.toPath());
             // Set the file content to the TextArea
-            fileContentTextArea.setText(fileCode.getContent());
+            fileContentTextArea.setText(addLineNumbering(fileCode.getContent()));
         }
         displayComplexities();
-        percentage.setText("Percentage of methods that are not in camelCase is: "
-                + (100-fileCode.percentageOfMethodsInCamelCase()) + "%");
+        double n = 100 - fileCode.percentageOfMethodsInCamelCase();
+        DecimalFormat df = new DecimalFormat("#.##");
+        String roundedPercentage = df.format(n);
+        percentage.setText("Percentage of methods that are not in camelCase is: " + roundedPercentage + "%");
         otherIssuesText.setText(createIssuesText());
     }
+
+    /**
+     * Adds line numbering to the code file.
+     * @param content The original content of the code file as a string.
+     * @return The content with line numbers added before each line.
+     */
+    private String addLineNumbering(String content) {
+        String[] lines = content.split("\n");
+
+        StringBuilder numberedContent = new StringBuilder();
+
+        for (int i = 0; i < lines.length; i++) {
+            numberedContent.append(i + 1)
+                    .append(".     ")
+                    .append(lines[i])
+                    .append("\n");
+        }
+
+        return numberedContent.toString();
+    }
+
 
     /**
      * displays the top3complexities

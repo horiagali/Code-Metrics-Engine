@@ -1,24 +1,28 @@
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.control.MenuBar?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.control.RadioMenuItem?>
-<?import javafx.scene.image.Image?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<VBox fx:id="vbox" alignment="CENTER" prefHeight="600.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.scenes.MainPageCtrl" stylesheets="/css.files/styles.css">
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="vbox" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1200.0" prefWidth="3000.0" stylesheets="/css.files/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.scenes.MainPageCtrl">
 
     <!-- MenuBar -->
-    <MenuBar layoutX="-14.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="41.0" prefWidth="640.0" VBox.vgrow="NEVER">
+    <MenuBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="41.0" prefWidth="640.0" VBox.vgrow="NEVER">
         <menus>
             <Menu fx:id="languageMenu" mnemonicParsing="false">
                 <graphic>
@@ -44,7 +48,7 @@
                             </ImageView>
                         </graphic>
                     </RadioMenuItem>
-                    <RadioMenuItem mnemonicParsing="false"  text="Romana">
+                    <RadioMenuItem mnemonicParsing="false" text="Romana">
                         <toggleGroup>
                             <fx:reference source="languageGroup" />
                         </toggleGroup>
@@ -74,7 +78,7 @@
     </MenuBar>
 
 
-    <Label text="Code Quality Checker" id="titleLabel">
+          <Label id="titleLabel" text="Code Quality Checker">
         <font>
             <Font name="Arial" size="40.0" />
         </font>
@@ -82,46 +86,76 @@
 
 
 
-    <Region prefHeight="10.0" />
+          <Region prefHeight="10.0" />
     <!-- Button to pick a Java file -->
-    <Button text="Pick Java File" onAction="#pickFile" />
-    <!-- Max Lines Per Method Input -->
-    <VBox spacing="10" alignment="CENTER">
-        <Text text="Enter Max Lines Per Method:">
-            <font>
-                <Font name="Times New Roman" size="14.0" />
-            </font>
-        </Text>
-        <TextField fx:id="maxLinesInput" maxWidth="100.0" />
-    </VBox>
+    <Button onAction="#pickFile" text="Pick Java File" textAlignment="CENTER">
+      <cursor>
+         <Cursor fx:constant="OPEN_HAND" />
+      </cursor>
+   </Button>
+   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <children>
+          <!-- Max Lines Per Method Input -->
+          <VBox alignment="CENTER" spacing="10">
+              <Text text="Enter Max Lines Per Method:">
+                  <font>
+                      <Font name="Times New Roman" size="14.0" />
+                  </font>
+              </Text>
+              <TextField fx:id="maxLinesInput" maxWidth="100.0" />
+            <padding>
+               <Insets right="10.0" />
+            </padding>
+          </VBox>
 
-    <!-- Max Characters Per Line Input -->
-    <VBox spacing="10" alignment="CENTER">
-        <Text text="Enter Max Characters Per Line:">
-            <font>
-                <Font name="Arial" size="14.0" />
-            </font>
-        </Text>
-        <TextField fx:id="maxCharsInput" maxWidth="100.0" />
-    </VBox>
+                      <!-- Max Characters Per Line Input -->
+          <VBox alignment="CENTER" spacing="10">
+              <Text text="Enter Max Characters Per Line:">
+                  <font>
+                      <Font name="Times New Roman" size="14.0" />
+                  </font>
+              </Text>
+              <TextField fx:id="maxCharsInput" alignment="CENTER" maxWidth="100.0" />
+            <padding>
+               <Insets left="10.0" />
+            </padding>
+          </VBox>
+      </children>
+   </HBox>
 
-    <Button text="Apply" onAction="#applySettings" />
+                            <Button onAction="#applySettings" text="Apply" />
+    <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
+        <children>
+            <!-- Text area for file content -->
+            <TextArea fx:id="fileContentTextArea" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="317.0" wrapText="true" HBox.hgrow="ALWAYS">
+                <HBox.margin>
+                    <Insets right="30.0" />
+                </HBox.margin>
+                <font>
+                    <Font name="Consolas" size="12.0" />
+                </font>
+            </TextArea>
 
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="3.0" HBox.hgrow="ALWAYS">
+                <children>
+                    <Text text="The methods with the biggest complexities are:" />
+                    <!-- Text area for displaying complexities -->
+                    <TextArea fx:id="complexities" prefHeight="103.0" prefWidth="137.0" wrapText="true" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS"/>
+                    <!-- Text area for displaying percentage -->
+                    <TextArea fx:id="percentage" prefHeight="50.0" wrapText="true" HBox.hgrow="ALWAYS"/>
 
+                    <Text text="Other issues found:" />
+                    <TextArea fx:id="otherIssuesText" prefHeight="167.0" prefWidth="363.0" wrapText="true" HBox.hgrow="ALWAYS"/>
+                </children>
+                <HBox.margin>
+                    <Insets />
+                </HBox.margin>
+            </VBox>
+        </children>
+        <padding>
+            <Insets bottom="10.0" top="10.0" />
+        </padding>
+    </HBox>
 
-    <!-- Text area for file content -->
-    <TextArea fx:id="fileContentTextArea" maxWidth="600.0" prefHeight="300.0" wrapText="true" />
-
-    <Text text="The methods with the biggest complexities are:" />
-    <!-- Text area for displaying complexities -->
-    <TextArea fx:id="complexities" maxWidth="600.0" prefHeight="300.0" wrapText="true" />
-
-    <Text fx:id="camelCasePercentageText" text="Percentage of methods not in camel case:" />
-    <!-- Text area for displaying percentage -->
-    <TextArea fx:id="percentage" maxWidth="600.0" prefHeight="50.0" wrapText="true" />
-
-
-    <Text text="Other issues found:" />
-    <TextArea fx:id="otherIssuesText" maxWidth="600.0" prefHeight="200.0" wrapText="true" />
 
 </VBox>

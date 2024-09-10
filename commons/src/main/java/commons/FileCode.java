@@ -55,7 +55,7 @@ public class FileCode {
         }
 
         parseFile(filePath.toString());
-        debugOut();
+//        debugOut();
     }
 
     /**
